@@ -1,29 +1,44 @@
 # instagram_scraper
+
+[![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)](https://black.readthedocs.io/en/stable/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/igramscraper?style=for-the-badge)](https://docs.python.org/release/3.9.0/)
+[![PyPI](https://img.shields.io/pypi/v/igramscraper?style=for-the-badge)](https://pypi.org/project/igramscraper/)
+![PyPI - Status](https://img.shields.io/pypi/status/igramscraper?style=for-the-badge)
+[![Github Issues](https://img.shields.io/github/issues/realsirjoe/instagram-scraper?style=for-the-badge)](https://github.com/realsirjoe/instagram-scraper/issues)
+
 <img src="https://raw.githubusercontent.com/realsirjoe/designs/master/flat_illustration.png" align="right">
+
 This is a minimalistic Instagram scraper written in Python.
-<br /><br />
+
 It can fetch media, accounts, videos, comments etc.
 `Comment` and `Like` actions are also supported.
 
 It is not easy to get Applications approved for Instagram's API therefore I created this tool inspired by [instagram-php-scraper](https://github.com/postaddictme/instagram-php-scraper).
-<br /><br />
+
 The goal of this project is to become as minimalistic as possible while still having all the needed functionality so that its easy to add code to it!
 
-Any ⭐️ or contribution is appreciated if you like the project 🤘
+Any &#9733; or contribution are appreciated if you like the project.
+
+[![Donate](https://img.shields.io/badge/donate-Buy%20Me%20A%20Coffee-green?style=for-the-badge)](https://www.buymeacoffee.com/realsirjoe)
 
 ## How to install
+
 Simply run:
-```
+
+```shell
 pip install igramscraper
 ```
 
 or download the project via git clone and run the following:
-```
+
+```shell
 pip install -r requirements.txt
 ```
 
 ## Usages
+
 Some methods do require authentication:
+
 ```python
 
 from igramscraper.instagram import Instagram
@@ -51,21 +66,25 @@ print('Number of follows: ', account.follows_count)
 print('Is private: ', account.is_private)
 print('Is verified: ', account.is_verified)
 
-# or simply for printing use 
+# or simply for printing use
 print(account)
 ```
-If you use authentication, the program will cache the user session by default so one doesn't need to create session every time.  
+
+If you use authentication, the program will cache the user session by default so one doesn't need to create session every time.
 If one want to disable the user session cache, assign `True` to Instagram.login() method
 
-Two Factor Authentication is also supported through cli interface, simply use 'True' for second argument of login() function 
-  
-Many of the methods do not require authentication
+Two Factor Authentication is also supported through cli interface, simply use 'True' for second argument of login() function
+
+### All methods now require authentication
+
+As of [June 29, 2020](https://www.instagram.com/developer/) the basic Developer API was closed and end users are now required to authenticate to view and search profiles as all endpoints force authentication requests.
 
 for more info browse through the examples folder
 
 Using proxy for requests:
+
 ```python
-from igramscraper.instagram import Instagram 
+from igramscraper.instagram import Instagram
 
 proxies = {
     'http': 'http://123.45.67.8:1087',
@@ -80,21 +99,26 @@ print(account.identifier)
 ```
 
 ## Recommended Limits
+
 If you make too many requests too fast you will get a 429 Error or something similar.
+
 - It is recommended to make a short break between each request of 30s (+- random)
 - In between all 10 requests a long break (300-600s)
 
-If different proxies and accounts are used for all requests and the circle doesn't repeat too fast these limits don't apply ;)
+If different proxies and accounts are used for all requests and the circle doesn't repeat too fast these limits don't apply ; )
 
 Feel free to make your own tests and let us know of any limits you experienced
 
 ## More usages
+
 See examples [here](https://github.com/SergioWagenleitner/instagram-scraper/tree/master/examples).
 
 ## How to contribute
+
 Every contribution is welcome, check out our [TODOs](https://github.com/realsirjoe/instagram-scraper/blob/master/CONTRIBUTING.md)
-<br />
-and join our telegram group: https://t.me/joinchat/J86yTBAtZlEi-6T6LOxijw
+
+and join our [telegram group](https://t.me/joinchat/J86yTBAtZlEi-6T6LOxijw)
 
 ## Other
+
 instagram-php-scraper [here](https://github.com/postaddictme/instagram-php-scraper/)

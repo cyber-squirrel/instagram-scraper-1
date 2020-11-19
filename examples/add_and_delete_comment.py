@@ -1,4 +1,5 @@
-from context import Instagram # pylint: disable=no-name-in-module
+# -*- coding: utf-8 -*-
+from examples.context import Instagram  # pylint: disable=no-name-in-module
 
 instagram = Instagram()
 instagram.with_credentials('username', 'password', 'path/to/cache/folder')
@@ -11,6 +12,5 @@ comment = instagram.add_comment(mediaId, 'nice!!')
 # replied to comment
 comment_b = instagram.add_comment(mediaId, 'cool man', comment)
 
-    
-instagram.delete_comment(mediaId, comment)
 
+instagram.delete_comment(mediaId, comment)

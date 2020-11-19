@@ -1,10 +1,11 @@
-from context import Instagram # pylint: disable=no-name-in-module
+# -*- coding: utf-8 -*-
+from examples.context import Instagram  # pylint: disable=no-name-in-module
 
 # If account is public you can query Instagram without auth
 
 instagram = Instagram()
 
-medias = instagram.get_medias("kevin", 25)
+medias = instagram.get_medias('kevin', 25)
 media = medias[6]
 
 print(media)

@@ -1,4 +1,5 @@
-from context import Instagram # pylint: disable=no-name-in-module
+# -*- coding: utf-8 -*-
+from examples.context import Instagram  # pylint: disable=no-name-in-module
 
 account = Instagram().get_account_by_id('3')
 

@@ -1,10 +1,12 @@
-import urllib.parse
+# -*- coding: utf-8 -*-
 import textwrap
+import urllib.parse
 
-from .initializer_model import InitializerModel
-from .comment import Comment
-from .carousel_media import CarouselMedia
 from .. import endpoints
+
+# from .carousel_media import CarouselMedia
+from .comment import Comment
+from .initializer_model import InitializerModel
 
 
 class Media(InitializerModel):
@@ -68,7 +70,7 @@ class Media(InitializerModel):
         alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
         code = ''
 
-        while (id > 0):
+        while id > 0:
             remainder = int(id) % 64
             id = (id - remainder) // 64
             code = alphabet[remainder] + code
@@ -104,7 +106,7 @@ class Media(InitializerModel):
             'caption',
             'video_view_count',
             'caption_is_edited',
-            'is_ad'
+            'is_ad',
         ]
 
         if prop in standart_properties:
@@ -148,7 +150,7 @@ class Media(InitializerModel):
         elif prop == 'carousel_media':
             self.type = Media.TYPE_CAROUSEL
             self.carousel_media = []
-            for carousel_array in arr["carousel_media"]:
+            for carousel_array in arr['carousel_media']:
                 self.set_carousel_media(arr, carousel_array)
 
         elif prop == 'video_views':
@@ -157,8 +159,7 @@ class Media(InitializerModel):
 
         elif prop == 'videos':
             self.video_low_resolution_url = arr[prop]['low_resolution']['url']
-            self.video_standard_resolution_url = \
-            arr[prop]['standard_resolution']['url']
+            self.video_standard_resolution_url = arr[prop]['standard_resolution']['url']
             self.video_low_bandwith_url = arr[prop]['low_bandwidth']['url']
 
         elif prop == 'video_resources':
@@ -176,6 +177,7 @@ class Media(InitializerModel):
 
         elif prop == 'user' or prop == 'owner':
             from .account import Account
+
             self.owner = Account(arr[prop])
 
         elif prop == 'is_video':
@@ -202,13 +204,11 @@ class Media(InitializerModel):
             except KeyError:
                 pass
             try:
-                self.has_more_comments = bool(
-                    arr[prop]['page_info']['has_next_page'])
+                self.has_more_comments = bool(arr[prop]['page_info']['has_next_page'])
             except KeyError:
                 pass
             try:
-                self.comments_next_page = str(
-                    arr[prop]['page_info']['end_cursor'])
+                self.comments_next_page = str(arr[prop]['page_info']['end_cursor'])
             except KeyError:
                 pass
 

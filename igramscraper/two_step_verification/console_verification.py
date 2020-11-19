@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
 from .two_step_verification_abstract_class import TwoStepVerificationAbstractClass
 
 
 class ConsoleVerification(TwoStepVerificationAbstractClass):
-
     def get_verification_type(self, choices):
-        if (len(choices) > 1):
+        if len(choices) > 1:
             possible_values = {}
             print('Select where to send security code')
 
@@ -14,8 +14,8 @@ class ConsoleVerification(TwoStepVerificationAbstractClass):
 
             selected_choice = None
 
-            while (not selected_choice in possible_values.keys()):
-                if (selected_choice):
+            while selected_choice not in possible_values.keys():
+                if selected_choice:
                     print('Wrong choice. Try again')
 
                 selected_choice = input('Your choice: ').strip()
@@ -31,8 +31,8 @@ class ConsoleVerification(TwoStepVerificationAbstractClass):
         :return: string
         """
         security_code = ''
-        while (len(security_code) != 6 and not security_code.isdigit()):
-            if (security_code):
+        while len(security_code) != 6 and not security_code.isdigit():
+            if security_code:
                 print('Wrong security code')
 
             security_code = input('Enter security code: ').strip()

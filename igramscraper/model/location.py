@@ -1,9 +1,10 @@
-from .initializer_model import InitializerModel
+# -*- coding: utf-8 -*-
 import textwrap
+
+from .initializer_model import InitializerModel
 
 
 class Location(InitializerModel):
-
     def __init__(self, props=None):
         self.identifier = None
         self.has_public_page = None

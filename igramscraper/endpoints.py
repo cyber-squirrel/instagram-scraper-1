@@ -1,5 +1,6 @@
-import urllib.parse
+# -*- coding: utf-8 -*-
 import json
+import urllib.parse
 
 USER_MEDIAS = '17880160963012870'
 USER_STORIES = '17890626976041463'
@@ -13,7 +14,9 @@ ACCOUNT_MEDIAS = 'https://www.instagram.com/graphql/query/?query_hash=bfa387b299
 ACCOUNT_TAGGED_MEDIAS = 'https://www.instagram.com/graphql/query/?query_hash=ff260833edf142911047af6024eb634a&variables=%s'
 ACCOUNT_JSON_INFO = 'https://www.instagram.com/%s/?__a=1'
 MEDIA_JSON_INFO = 'https://www.instagram.com/p/%s/?__a=1'
-MEDIA_JSON_BY_LOCATION_ID = 'https://www.instagram.com/explore/locations/%s/?__a=1&max_id=%s'
+MEDIA_JSON_BY_LOCATION_ID = (
+    'https://www.instagram.com/explore/locations/%s/?__a=1&max_id=%s'
+)
 MEDIA_JSON_BY_TAG = 'https://www.instagram.com/explore/tags/%s/?__a=1&max_id=%s'
 GENERAL_SEARCH = 'https://www.instagram.com/web/search/topsearch/?query=%s'
 COMMENTS_BEFORE_COMMENT_ID_BY_CODE = 'https://www.instagram.com/graphql/query/?query_hash=97b41c52301f77ce508f55e66d17620e&variables=%s'
@@ -55,10 +58,16 @@ def get_account_json_private_info_link_by_account_id(account_id):
 
 
 def get_account_medias_json_link(variables):
-    return ACCOUNT_MEDIAS % urllib.parse.quote_plus(json.dumps(variables, separators=(',', ':')))
+    return ACCOUNT_MEDIAS % urllib.parse.quote_plus(
+        json.dumps(variables, separators=(',', ':'))
+    )
+
 
 def get_account_tagged_medias_json_link(variables):
-    return ACCOUNT_TAGGED_MEDIAS % urllib.parse.quote_plus(json.dumps(variables, separators=(',', ':')))
+    return ACCOUNT_TAGGED_MEDIAS % urllib.parse.quote_plus(
+        json.dumps(variables, separators=(',', ':'))
+    )
+
 
 def get_media_page_link(code):
     return MEDIA_LINK % urllib.parse.quote_plus(code)
@@ -69,11 +78,17 @@ def get_media_json_link(code):
 
 
 def get_medias_json_by_location_id_link(facebook_location_id, max_id=''):
-    return MEDIA_JSON_BY_LOCATION_ID % (urllib.parse.quote_plus(str(facebook_location_id)), urllib.parse.quote_plus(max_id))
+    return MEDIA_JSON_BY_LOCATION_ID % (
+        urllib.parse.quote_plus(str(facebook_location_id)),
+        urllib.parse.quote_plus(max_id),
+    )
 
 
 def get_medias_json_by_tag_link(tag, max_id=''):
-    return MEDIA_JSON_BY_TAG % (urllib.parse.quote_plus(str(tag)), urllib.parse.quote_plus(str(max_id)))
+    return MEDIA_JSON_BY_TAG % (
+        urllib.parse.quote_plus(str(tag)),
+        urllib.parse.quote_plus(str(max_id)),
+    )
 
 
 def get_general_search_json_link(query):
@@ -81,15 +96,23 @@ def get_general_search_json_link(query):
 
 
 def get_comments_before_comments_id_by_code(variables):
-    return COMMENTS_BEFORE_COMMENT_ID_BY_CODE % urllib.parse.quote_plus(json.dumps(variables, separators=(',', ':')))
+    return COMMENTS_BEFORE_COMMENT_ID_BY_CODE % urllib.parse.quote_plus(
+        json.dumps(variables, separators=(',', ':'))
+    )
 
 
 def get_last_likes_by_code_old(code, count, last_like_id):
-    return LIKES_BY_SHORTCODE_OLD % (urllib.parse.quote_plus(code), urllib.parse.quote_plus(str(count)), urllib.parse.quote_plus(str(last_like_id)))
+    return LIKES_BY_SHORTCODE_OLD % (
+        urllib.parse.quote_plus(code),
+        urllib.parse.quote_plus(str(count)),
+        urllib.parse.quote_plus(str(last_like_id)),
+    )
 
 
 def get_last_likes_by_code(variables):
-    return LIKES_BY_SHORTCODE % urllib.parse.quote_plus(json.dumps(variables, separators=(',', ':')))
+    return LIKES_BY_SHORTCODE % urllib.parse.quote_plus(
+        json.dumps(variables, separators=(',', ':'))
+    )
 
 
 def get_follow_url(account_id):
@@ -110,7 +133,8 @@ def get_unblock_url(account_id):
 
 def get_followers_json_link_old(account_id, count, after=''):
     url = FOLLOWERS_URL_OLD.replace(
-        '{{accountId}}', urllib.parse.quote_plus(account_id))
+        '{{accountId}}', urllib.parse.quote_plus(account_id)
+    )
     url = url.replace('{{count}}', urllib.parse.quote_plus(str(count)))
 
     if after == '':
@@ -120,13 +144,17 @@ def get_followers_json_link_old(account_id, count, after=''):
 
     return url
 
+
 def get_followers_json_link(variables):
-    return FOLLOWERS_URL % urllib.parse.quote_plus(json.dumps(variables, separators=(',', ':')))
+    return FOLLOWERS_URL % urllib.parse.quote_plus(
+        json.dumps(variables, separators=(',', ':'))
+    )
 
 
 def get_following_json_link_old(account_id, count, after=''):
     url = FOLLOWING_URL_OLD.replace(
-        '{{accountId}}', urllib.parse.quote_plus(account_id))
+        '{{accountId}}', urllib.parse.quote_plus(account_id)
+    )
     url = url.replace('{{count}}', urllib.parse.quote_plus(count))
 
     if after == '':
@@ -136,11 +164,17 @@ def get_following_json_link_old(account_id, count, after=''):
 
     return url
 
+
 def get_following_json_link(variables):
-    return FOLLOWING_URL % urllib.parse.quote_plus(json.dumps(variables, separators=(',', ':')))
+    return FOLLOWING_URL % urllib.parse.quote_plus(
+        json.dumps(variables, separators=(',', ':'))
+    )
+
 
 def get_user_stories_link():
-    return get_graph_ql_url(USER_STORIES, {'variables': json.dumps([], separators=(',', ':'))})
+    return get_graph_ql_url(
+        USER_STORIES, {'variables': json.dumps([], separators=(',', ':'))}
+    )
 
 
 def get_graph_ql_url(query_id, parameters):
@@ -154,7 +188,9 @@ def get_graph_ql_url(query_id, parameters):
 
 
 def get_stories_link(variables):
-    return get_graph_ql_url(STORIES, {'variables': json.dumps(variables, separators=(',', ':'))})
+    return get_graph_ql_url(
+        STORIES, {'variables': json.dumps(variables, separators=(',', ':'))}
+    )
 
 
 def get_like_url(media_id):
@@ -170,5 +206,7 @@ def get_add_comment_url(media_id):
 
 
 def get_delete_comment_url(media_id, comment_id):
-    return DELETE_COMMENT_URL % (urllib.parse.quote_plus(str(media_id)), urllib.parse.quote_plus(str(comment_id)))
-
+    return DELETE_COMMENT_URL % (
+        urllib.parse.quote_plus(str(media_id)),
+        urllib.parse.quote_plus(str(comment_id)),
+    )

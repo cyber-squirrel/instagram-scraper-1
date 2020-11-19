@@ -1,4 +1,5 @@
-from igramscraper.instagram import Instagram
+# -*- coding: utf-8 -*-
+from examples.context import Instagram
 
 # If account is public you can query Instagram without auth
 instagram = Instagram()

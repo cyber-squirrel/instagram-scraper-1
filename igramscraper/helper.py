@@ -1,7 +1,7 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
-from functools import reduce
 import signal
+from functools import reduce
 
 
 def get_from_dict(data_dict, map_list, default=None):
@@ -38,18 +38,23 @@ def set_timeout(num, callback):
     :param callback:
     :return:
     """
+
     def wrap(func):
         def handle(signum, frame):
             raise RuntimeError
 
         def to_do(*args, **kwargs):
             try:
+                # SIGALRM is not windows compatible
+                # TODO: Implement a better approach
                 signal.signal(signal.SIGALRM, handle)
                 signal.alarm(num)
                 r = func(*args, **kwargs)
                 signal.alarm(0)
                 return r
             except RuntimeError as e:
-                callback()
+                callback(e)
+
         return to_do
+
     return wrap

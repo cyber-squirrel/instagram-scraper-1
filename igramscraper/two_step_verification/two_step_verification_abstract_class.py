@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 from abc import ABC, abstractmethod
 
 
 class TwoStepVerificationAbstractClass(ABC):
-
     @abstractmethod
     def get_verification_type(self, possible_values):
         """

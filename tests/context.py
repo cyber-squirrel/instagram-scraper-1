@@ -3,8 +3,9 @@ import os
 import sys
 
 from igramscraper.instagram import Instagram  # noqa: F401
+from igramscraper.model import media as Media  # noqa: F401
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 """
 Context Processor:

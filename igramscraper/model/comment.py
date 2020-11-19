@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 from .initializer_model import InitializerModel
 
 
 class Comment(InitializerModel):
     """
-     * @param $value
-     * @param $prop
-     """
+    * @param $value
+    * @param $prop
+    """
 
     def __init__(self, props=None):
         self.identifier = None
@@ -19,7 +20,7 @@ class Comment(InitializerModel):
     def _init_properties_custom(self, value, prop, array):
 
         if prop == 'id':
-           self.identifier = value
+            self.identifier = value
 
         standart_properties = [
             'created_at',
@@ -31,4 +32,5 @@ class Comment(InitializerModel):
 
         if prop == 'owner':
             from .account import Account
+
             self.owner = Account(value)

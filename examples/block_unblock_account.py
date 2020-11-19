@@ -1,4 +1,5 @@
-from context import Instagram # pylint: disable=no-name-in-module
+# -*- coding: utf-8 -*-
+from examples.context import Instagram  # pylint: disable=no-name-in-module
 
 instagram = Instagram()
 instagram.with_credentials('', '', 'pathtocache')

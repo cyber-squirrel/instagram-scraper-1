@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 import time
 
 
 class InitializerModel:
-
     def __init__(self, props=None):
 
         self._is_new = True

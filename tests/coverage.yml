@@ -1,0 +1,24 @@
+Name                                                                         Stmts   Miss  Cover
+------------------------------------------------------------------------------------------------
+examples\__init__.py                                                             0      0   100%
+igramscraper\__init__.py                                                         0      0   100%
+igramscraper\endpoints.py                                                      107     42    61%
+igramscraper\exception\__init__.py                                               4      0   100%
+igramscraper\exception\instagram_auth_exception.py                               3      1    67%
+igramscraper\exception\instagram_exception.py                                    6      2    67%
+igramscraper\exception\instagram_not_found_exception.py                          3      1    67%
+igramscraper\model\__init__.py                                                  10      0   100%
+igramscraper\model\account.py                                                   76     66    13%
+igramscraper\model\carousel_media.py                                            11      9    18%
+igramscraper\model\comment.py                                                   17     13    24%
+igramscraper\model\initializer_model.py                                         21     17    19%
+igramscraper\model\location.py                                                  21     15    29%
+igramscraper\model\media.py                                                    181    157    13%
+igramscraper\model\story.py                                                     11      5    55%
+igramscraper\model\tag.py                                                       13      9    31%
+igramscraper\model\user_stories.py                                               7      4    43%
+igramscraper\two_step_verification\__init__.py                                   3      0   100%
+igramscraper\two_step_verification\console_verification.py                      24     20    17%
+igramscraper\two_step_verification\two_step_verification_abstract_class.py       8      2    75%
+------------------------------------------------------------------------------------------------
+TOTAL                                                                          526    363    31%

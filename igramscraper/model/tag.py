@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 from .initializer_model import InitializerModel
 
 
 class Tag(InitializerModel):
-
     def __init__(self, props=None):
         self._media_count = 0
         self._name = None
@@ -13,7 +13,7 @@ class Tag(InitializerModel):
 
         if prop == 'id':
             self.identifier = value
-        
+
         standart_properties = [
             'media_count',
             'name',

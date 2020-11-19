@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
+import textwrap
+
 from .initializer_model import InitializerModel
 from .media import Media
-import textwrap
 
 
 class Account(InitializerModel):
-
     def __init__(self, props=None):
         self.identifier = None
         self.username = None
@@ -69,6 +70,7 @@ class Account(InitializerModel):
      * @param Media $media
      * @return Account
     """
+
     def add_media(self, media):
         try:
             self.medias.append(media)
@@ -76,7 +78,7 @@ class Account(InitializerModel):
             raise AttributeError
 
     def _init_properties_custom(self, value, prop, array):
-        
+
         if prop == 'id':
             self.identifier = value
 
@@ -94,7 +96,7 @@ class Account(InitializerModel):
             'followed_by_viewer',
             'follows_viewer',
             'has_channel',
-            'has_blocked_viewer', 
+            'has_blocked_viewer',
             'highlight_reel_count',
             'has_requested_viewer',
             'is_business_account',
@@ -104,28 +106,30 @@ class Account(InitializerModel):
             'business_phone_number',
             'business_address_json',
             'requested_by_viewer',
-            'connected_fb_page'
+            'connected_fb_page',
         ]
         if prop in standart_properties:
-            self.__setattr__(prop, value)   
-        
+            self.__setattr__(prop, value)
+
         if prop == 'edge_follow':
-            self.follows_count = array[prop]['count'] \
-                if array[prop]['count'] is not None  else 0
+            self.follows_count = (
+                array[prop]['count'] if array[prop]['count'] is not None else 0
+            )
 
         if prop == 'edge_followed_by':
-            self.followed_by_count = array[prop]['count'] \
-                if array[prop]['count'] is not None else 0
+            self.followed_by_count = (
+                array[prop]['count'] if array[prop]['count'] is not None else 0
+            )
 
         if prop == 'edge_owner_to_timeline_media':
             self._init_media(array[prop])
 
     def _init_media(self, array):
-        self.media_count = array['count'] if 'count' in array.keys() else 0 
+        self.media_count = array['count'] if 'count' in array.keys() else 0
 
         try:
             nodes = array['edges']
-        except:
+        except Exception:
             return
 
         if not self.media_count or isinstance(nodes, list):
